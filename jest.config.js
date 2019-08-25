@@ -1,3 +1,5 @@
+/* eslint-disable fp/no-let,fp/no-mutation */
+
 const process = require('process');
 
 let testSpec = '(spec)';
@@ -18,5 +20,6 @@ module.exports = {
 		'^.*\\.png$': '<rootDir>/test/stubs/stub.png',
 		'^.*\\.scss$': '<rootDir>/test/stubs/stub.scss',
 	},
+	setupFilesAfterEnv: ['<rootDir>/test/jest/setup.js'],
 	testMatch: ['**/?(*.)+' + testSpec + '.jsx'],
 };

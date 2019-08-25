@@ -1,32 +1,33 @@
-# An Example Chat Application using Feathers & Next.js frameworks
+# An Example Redux Observable Application using Feathers & Next.js frameworks
 
 This is an experimental project for honing Node.js full-stack skills, notably:
 
-- Feathers: a REST and real-time API layer for Node.js and the browser
-- composing Express applications: Feathers & Next.js
-- websocket-based messaging
+- Redux-Observable for stream epics
+- RxJS libraray for stream processing
+- Most library for stream processing
+- anonmyous websocket steams
+- superagent (instead of axios)
 
-The chat application is derived from Feathers sample projects:
+This sample project is built upon a project foundation developed for:
 
-- [feathersjs/feathers-chat](https://github.com/feathersjs/feathers-chat.git)
-- [feathersjs/feathers-chat-react](https://github.com/feathersjs-ecosystem/feathers-chat-react.git)
-
-These sample projects are combined into a single full-stack application adapted for Next.js and
-built upon a project foundation developed for the example project:
-
-- [mjbrown/nextjs-react-hooks-example](https://gitlab.com/mjbrown/nextjs-react-hooks-example.git)
+- [mjbrown/chat-feathers-nextjs-react-hooks-example](https://gitlab.com/mjbrown/chat-feathers-nextjs-react-hooks-example.git)
   
 which implements the following features:
 
+- Feathers: a REST and real-time API layer for Node.js and the browser
 - Next.js React framework
+- composing Express applications: Feathers & Next.js
 - React Hooks
-- JSX styling w/ Bulma Sass
+- styling w/ Bulma Sass
 - Markdown
 - Immer for state immutability
 - axios http w/ async/wait
+- websocket-based messaging
+- LWT-based user authentication
 - ARIA tags for accessibilty & testing
 - AVA and Jest for unit testing
 - Cypress for integration and end-to-end testing
+
 
 See the [documentation](./public/index.md) for more information.
 

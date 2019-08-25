@@ -17,7 +17,8 @@ coverage
 .grunt
 
 # Compiled binaries (incl. addons: http://nodejs.org/api/addons.html)
-build/Release
+# build/Release
+build
 dist
 
 # Dependency directory

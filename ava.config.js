@@ -1,3 +1,5 @@
+/* eslint-disable fp/no-let, fp/no-mutation */
+
 const process = require('process');
 
 let testSpec = '(spec)';
@@ -14,12 +16,19 @@ if (!process.env.TESTSPEC) {
 export default function config() {
 	return {
 		files: [
-			'client/**/*.' + testSpec + '.js',
-			'pages/**/*.' + testSpec + '.js',
-			'server/**/*.' + testSpec + '.js',
-			'test/**/*.' + testSpec + '.js'
+			'./src/client/**/*.' + testSpec + '.js',
+			'./src/server/**/*.' + testSpec + '.js',
+			'./src/test/**/*.' + testSpec + '.js',
+			'./src/utils/*.' + testSpec + '.js',
+			'./pages/*.' + testSpec + '.js',
 		],
-		sources: ['client/**/*', 'pages/**/*', 'server/**/*', 'test/**/*'],
+		sources: [
+			'./src/client/**/*',
+			'./src/server/**/*',
+			'./src/test/**/*',
+			'./src/utils/**/*',
+			'./pages/*',
+		],
 		cache: false,
 		concurrency: 5,
 		failFast: true,
@@ -30,15 +39,10 @@ export default function config() {
 		tap: true,
 		verbose: true,
 		compileEnhancements: false,
-		require: [
-			'esm',
-			'./.babel.register.test.js'
-		],
+		require: ['esm', './babel.register.test.js'],
 		babel: {
 			testOptions: {
-				plugins: [
-					'babel-plugin-rewire'
-				],
+				plugins: ['babel-plugin-rewire'],
 			},
 		},
 	};

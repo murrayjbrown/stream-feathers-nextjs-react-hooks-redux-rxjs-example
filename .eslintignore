@@ -1,6 +1,8 @@
 .next/**
+build/**
 cypress/**
 data/**
+dist/**
 logs/**
 node_modules/**
 test/**

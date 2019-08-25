@@ -1,0 +1,23 @@
+@charset 'utf-8';
+
+@import 'node_modules/bulma/sass/utilities/initial-variables.sass';
+@import 'src/styles/initial-variables.scss';
+@import 'node_modules/bulma/sass/utilities/functions.sass';
+@import 'node_modules/bulma/sass/utilities/derived-variables.sass';
+@import 'src/styles/variables.scss';
+
+@import 'node_modules/bulma/sass/utilities/animations.sass';
+@import 'node_modules/bulma/sass/utilities/mixins.sass';
+@import 'node_modules/bulma/sass/utilities/controls.sass';
+@import 'node_modules/bulma/sass/elements/button.sass';
+@import 'node_modules/bulma/bulma.sass';
+@import 'src/styles/typography.scss';
+@import 'src/styles/boxes';
+@import 'src/styles/layout';
+@import 'src/styles/chat.scss';
+
+article.content {
+  margin-top: 1rem;
+  margin-left: 1rem;
+  margin-right: 1rem;
+}

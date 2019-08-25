@@ -1,34 +1,35 @@
-# An Example Chat Application using Feathers & Next.js frameworks
+# An Example Redux Observable Application using Feathers & Next.js frameworks
 
 This is an experimental project for honing Node.js full-stack skills, notably:
 
-- Feathers: a REST and real-time API layer for Node.js and the browser
-- composing Express applications: Feathers & Next.js
-- websocket-based messaging
+- Redux-Observable for stream epics
+- RxJS libraray for stream processing
+- Most library for stream processing
+- anonmyous websocket steams
+- superagent (cf. [the sad state of axios](https://www.reddit.com/r/javascript/comments/cp5qhm/askjs_the_sad_state_of_axios/))
 
-The chat application is derived from Feathers sample projects:
+This sample project is built upon a project foundation developed for:
 
-- [feathersjs/feathers-chat](https://github.com/feathersjs/feathers-chat.git)
-- [feathersjs/feathers-chat-react](https://github.com/feathersjs-ecosystem/feathers-chat-react.git)
-
-These sample projects are combined into a single full-stack application adapted for Next.js and
-built upon a project foundation developed for the example project:
-
-- [mjbrown/nextjs-react-hooks-example](https://gitlab.com/mjbrown/nextjs-react-hooks-example.git)
+- [mjbrown/chat-feathers-nextjs-react-hooks-example](https://gitlab.com/mjbrown/chat-feathers-nextjs-react-hooks-example.git)
   
 which implements the following features:
 
+- Feathers: a REST and real-time API layer for Node.js and the browser
 - Next.js React framework
+- composing Express applications: Feathers & Next.js
 - React Hooks
-- JSX styling w/ Bulma Sass
+- styling w/ Bulma Sass
 - Markdown
 - Immer for state immutability
 - axios http w/ async/wait
+- websocket-based messaging
+- LWT-based user authentication
+- ARIA tags for accessibilty & testing
 - AVA and Jest for unit testing
-- ARIA attributes for accessibilty & testing
 - Cypress for integration and end-to-end testing
 
-*Note:* This is just a simple demo application. It is not intended to be complete, nor useful except to present how the applied technologies can be utilized. Consequently, not all features of the foundational project(s) are used herein (e.g., JSX styling). The test coverage is not thorough, it provides just a few example cases of various kinds of tests.
+
+*Note:* This is just a simple demo application. It is not intended to be complete, nor useful except to present how the applied technologies can be utilized. Consequently, not all features of the foundational project(s) are used herein (e.g., user authentication). The test coverage is not thorough, it provides just a few example cases of various kinds of tests.
 
 ## Installation
 
@@ -194,11 +195,23 @@ The `config` folder contains files specifying default configuration settings and
     - [x] context stores (shared state)
       - [x] action dispatching
       - [x] state reducers
-    - [x] effects  
+    - [x] effects
+- [x] Redux
+  - [x] React-Redux hooks
+  - [x] global state
+  - [x] actions
+  - [x] reducers
+  - [x] epics
+    - [x] Redux-Observable
+    - [x] RxJS streams
+    - [x] Most streams
+- [x] Stream processing
+  - [x] RxJS
+  - [x] Most  
 - [x] Utility libraries
   - [x] immer for immutability
   - [x] rambdax for default values
-  - [x] axios for http
+  - [x] superagent for http
   - [x] rust-match for conditionals
 - [x] Styling
   - [x] bulma framework
@@ -209,11 +222,10 @@ The `config` folder contains files specifying default configuration settings and
   - [x] eslint style checker
   - [x] flow static type checker
   - [x] node Javascript runtime
-  - [x] nodemon app monitor
   - [x] webpack bundler
 - [x] Testing
   - [x] AVA - logic unit tests
-  - [x] Jest - JSX unit tests
+  - [x] Jest & react-testing-library - JSX unit tests
   - [x] Cypress - integration & end-to-end tests
   - [x] concurrently
 - [x] Production

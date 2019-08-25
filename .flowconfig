@@ -1,16 +1,22 @@
 [ignore]
+<PROJECT_ROOT>/config/
 <PROJECT_ROOT>/cypress/
 <PROJECT_ROOT>/data/
+<PROJECT_ROOT>/dist/
 <PROJECT_ROOT>/flow-typed/
 <PROJECT_ROOT>/logs/
 <PROJECT_ROOT>/node_modules/bcryptjs/src/
+<PROJECT_ROOT>/node_modules/next/app/
 <PROJECT_ROOT>/public/
 <PROJECT_ROOT>/test/
+<PROJECT_ROOT>/src/client/**/*.spec.jsx
+<PROJECT_ROOT>/src/client/**/*.test.jsx
 
 [include]
-<PROJECT_ROOT>/client/
+<PROJECT_ROOT>/src/client/
+<PROJECT_ROOT>/src/server/
+<PROJECT_ROOT>/src/utils/
 <PROJECT_ROOT>/pages/
-<PROJECT_ROOT>/server/
 
 [libs]
 <PROJECT_ROOT>/flow-typed/
@@ -29,27 +35,30 @@ untyped-import=warn
 untyped-type-import=warn
 
 [options]
-include_warnings=true
+#esproposal.optional_chaining=enable
+include_warnings=false
 module.file_ext=.js
 module.file_ext=.json
 module.file_ext=.jsx
 module.file_ext=.mjs
 module.file_ext=.scss
-module.name_mapper='^@client\/\(.*\)$' -> '<PROJECT_ROOT>/client/\1'
-module.name_mapper='^@client$' -> '<PROJECT_ROOT>/client'
-module.name_mapper='^@config\/\(.*\)$' -> '<PROJECT_ROOT>/config/\1'
-module.name_mapper='^@config$' -> '<PROJECT_ROOT>/config'
+module.name_mapper='^@client\/\(.*\)$' -> '<PROJECT_ROOT>/src/client/\1'
+module.name_mapper='^@client$' -> '<PROJECT_ROOT>/src/client'
+module.name_mapper='^@config\/\(.*\)$' -> '<PROJECT_ROOT>/src/config/\1'
+module.name_mapper='^@config$' -> '<PROJECT_ROOT>/src/config'
 module.name_mapper='^@pages\/\(.*\)$' -> '<PROJECT_ROOT>/pages/\1'
 module.name_mapper='^@pages$' -> '<PROJECT_ROOT>/pages'
-module.name_mapper='^@public\/\(.*\)$' -> '<PROJECT_ROOT>/public/\1'
-module.name_mapper='^@public$' -> '<PROJECT_ROOT>/public'
-module.name_mapper='^@server\/\(.*\)$' -> '<PROJECT_ROOT>/server/\1'
-module.name_mapper='^@server$' -> '<PROJECT_ROOT>/server'
-module.name_mapper='^@test\/\(.*\)$' -> '<PROJECT_ROOT>/test/\1'
-module.name_mapper='^@test$' -> '<PROJECT_ROOT>/test'
+module.name_mapper='^@public\/\(.*\)$' -> '<PROJECT_ROOT>/src/public/\1'
+module.name_mapper='^@public$' -> '<PROJECT_ROOT>/src/public'
+module.name_mapper='^@server\/\(.*\)$' -> '<PROJECT_ROOT>/src/server/\1'
+module.name_mapper='^@server$' -> '<PROJECT_ROOT>/src/server'
+module.name_mapper='^@test\/\(.*\)$' -> '<PROJECT_ROOT>/src/test/\1'
+module.name_mapper='^@test$' -> '<PROJECT_ROOT>/src/test'
+module.name_mapper='^@utils\/\(.*\)$' -> '<PROJECT_ROOT>/src/utils/\1'
+module.name_mapper='^@utils$' -> '<PROJECT_ROOT>/src/utils'
 module.system.node.resolve_dirname=node_modules
-module.system.node.resolve_dirname=server
-module.system.node.resolve_dirname=client
+module.system.node.resolve_dirname=src
+module.system.node.resolve_dirname=test
 
 [strict]
 sketchy-null
