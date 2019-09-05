@@ -8,12 +8,10 @@ export default function AboutPage() {
 	});
 
 	return (
-		<div>
-			<article className='content'>
-				<h1>Welcome to About!</h1>
-				<p>This article should explain something about this site...</p>
-			</article>
-		</div>
+		<article className='content'>
+			<h1>Welcome to About!</h1>
+			<p>This article should explain something about this site...</p>
+		</article>
 	);
 }
 

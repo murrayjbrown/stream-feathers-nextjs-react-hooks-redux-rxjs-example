@@ -4,7 +4,7 @@ import superagent from 'superagent';
 import Markdown from 'react-markdown';
 
 type Props = {
-	src: string
+	src: string,
 };
 
 export default function IncludeMarkdown({ src }: Props) {

@@ -63,87 +63,32 @@ export default function ReduxColorizerApp() {
 
 		const comboValue: string = `${id}: ${color}`;
 		const bandValue: string = `vary ${varied}`;
-
-		const redStyle = {
-			minWidth: '10em',
-			backgroundColor: `#${hex(tick.rgb?.r ?? 0) + hex(0) + hex(0)}`,
-			fontFamily: 'monospace',
-		};
-		const greenStyle = {
-			minWidth: '10em',
-			backgroundColor: `#${hex(0) + hex(tick.rgb?.g ?? 0) + hex(0)}`,
-			fontFamily: 'monospace',
-		};
-		const blueStyle = {
-			minWidth: '10em',
-			backgroundColor: `#${hex(0) + hex(0) + hex(tick.rgb?.b ?? 0)}`,
-			fontFamily: 'monospace',
-		};
-		const tickStyle = {
-			minWidth: '20em',
-			backgroundcolor: '#ffffff',
-			color: '#000000',
-			textAlign: 'left',
-			fontFamily: 'monospace',
-		};
-		const bandStyle = {
-			minWidth: '20em',
-			backgroundcolor: '#ffffff',
-			color: '#000000',
-			textAlign: 'left',
-			fontFamily: 'monospace',
-		};
-
-		const comboStyle = (bgColor: string = '#ffffff') => ({
-			minWidth: '30em',
-			backgroundColor: `${bgColor}`,
-			fontFamily: 'monospace',
+		const bgColor = (value: string = '#ffffff') => ({
+			backgroundColor: `${value}`,
 		});
 
-		const spacerStyle = {
-			height: '5px',
-			maxHeight: '5px',
-			width: '100%',
-			backgroundColor: '#ffffff',
-			fontFamily: 'monospace',
-			textAlign: 'center',
-		};
-
 		return (
-			<div key={tickId}>
-				<div
-					style={{
-						display: 'flex',
-						flexDirection: 'column',
-						justifyContent: 'center',
-					}}
-				>
-					<div key={`${tickId}-spacer`} style={spacerStyle}>
+			<div className='tick' key={tickId}>
+				<div className='tickSpacer'>&nbsp;</div>
+				<div className='tickCombo'>
+					<div className='comboHead'>{comboValue}</div>
+					<div className='comboColor' style={bgColor(color)}>
 						&nbsp;
 					</div>
-					<div
-						key={`${tickId}-combo`}
-						style={{
-							display: 'flex',
-							flexDirection: 'row',
-							justifyContent: 'center',
-						}}
-					>
-						<div style={tickStyle}>{comboValue}</div>
-						<div style={comboStyle(color)}>&nbsp;</div>
+				</div>
+				<div className='tickBands'>
+					<div className='bandHead'>{bandValue}</div>
+					{/* eslint-disable-next-line quotes */}
+					<div className='redBand' style={bgColor(`#{hex(red)}0000`)}>
+						&nbsp;
 					</div>
-					<div
-						key={`${tickId}-bands`}
-						style={{
-							display: 'flex',
-							flexDirection: 'row',
-							justifyContent: 'center',
-						}}
-					>
-						<div style={bandStyle}>{bandValue}</div>
-						<div style={redStyle}>&nbsp;</div>
-						<div style={greenStyle}>&nbsp;</div>
-						<div style={blueStyle}>&nbsp;</div>
+					{/* eslint-disable-next-line quotes */}
+					<div className='greenBand' style={bgColor(`#00{hex(green)}00`)}>
+						&nbsp;
+					</div>
+					{/* eslint-disable-next-line quotes */}
+					<div className='blueBand' style={bgColor(`#0000{hex(blue)}`)}>
+						&nbsp;
 					</div>
 				</div>
 			</div>

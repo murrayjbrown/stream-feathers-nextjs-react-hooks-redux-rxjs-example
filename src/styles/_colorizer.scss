@@ -1,0 +1,61 @@
+@charset "utf-8";
+
+.tick {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	text-align: left;
+
+	.tickCombo {
+		display: flex;
+		flex-direction: row;
+		justify-content: center;
+
+		.comboHead {
+			min-width: 10em;
+			background-color: white;
+			color: black;
+			font-family: 'monospace';
+		};
+		.comboColor {
+			min-width: 30em;
+			background-color: white;
+			font-family: 'monospace';
+		};
+	}
+
+	.tickBands {
+		display: flex;
+		flex-direction: row;
+		justify-content: center;
+
+		.bandHead {
+			min-width: 10em;
+			background-color: white;
+			color: black;
+			font-family: 'monospace',
+		};
+		.redBand {
+				min-width: 10em;
+				background-color: #ff0000;
+				font-family: 'monospace';
+		};
+		.greenBand {
+			min-width: 10em;
+			background-color: #00ff00;
+			font-family: 'monospace';
+		};
+		.blueBand {
+			min-width: 10em;
+			background-color: #0000ff;
+			font-family: 'monospace';
+		};
+	};
+
+	.tickSpacer {
+		height: 5px;
+		max-height: 5px;
+		width: 100%;
+		background-color: white;
+	};
+};

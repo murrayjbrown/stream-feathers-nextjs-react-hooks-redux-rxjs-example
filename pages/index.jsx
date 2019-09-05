@@ -12,8 +12,8 @@ export default function HomePage() {
 	});
 
 	return (
-		<div>
+		<article className='content'>
 			<IncludeMarkdown src='/public/index.md' />
-		</div>
+		</article>
 	);
 }
