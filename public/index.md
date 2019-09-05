@@ -1,14 +1,14 @@
 # An Example Redux Observable Application using Feathers & Next.js frameworks
 
+**Repository:** [mjbrown/stream-feathers-nextjs-react-hooks-example](https://gitlab.com/mjbrown/stream-feathers-nextjs-react-hooks-example.git)
+  
 This is an experimental project for honing Node.js full-stack skills, notably:
 
-- Redux-Observable for stream epics
+- Redux-Observable for epics
 - RxJS libraray for stream processing
-- Most library for stream processing
 - anonmyous websocket steams
-- superagent (cf. [the sad state of axios](https://www.reddit.com/r/javascript/comments/cp5qhm/askjs_the_sad_state_of_axios/))
 
-This sample project is built upon a project foundation developed for:
+It is built upon a project foundation developed for:
 
 - [mjbrown/chat-feathers-nextjs-react-hooks-example](https://gitlab.com/mjbrown/chat-feathers-nextjs-react-hooks-example.git)
   
@@ -27,9 +27,20 @@ which implements the following features:
 - ARIA tags for accessibilty & testing
 - AVA and Jest for unit testing
 - Cypress for integration and end-to-end testing
+- Eslint style checking
+- Flow-type static analysis
+
+with the following notable enhancements:
+- superagent replaces axios
+  - (cf. [the sad state of axios](https://www.reddit.com/r/javascript/comments/cp5qhm/askjs_the_sad_state_of_axios/))
+- use of latest/proposed Javascript features:
+  - nullish-coalescing-operator (i.e., '??', superseding rambdax defaultToStrict function)
+  - optional-chaining (i.e., 'a?.b?.c')
+- retooling & refactoring to support Flow annotations in server-side source code
 
 
 *Note:* This is just a simple demo application. It is not intended to be complete, nor useful except to present how the applied technologies can be utilized. Consequently, not all features of the foundational project(s) are used herein (e.g., user authentication). The test coverage is not thorough, it provides just a few example cases of various kinds of tests.
+
 
 ## Installation
 
@@ -201,16 +212,10 @@ The `config` folder contains files specifying default configuration settings and
   - [x] global state
   - [x] actions
   - [x] reducers
-  - [x] epics
-    - [x] Redux-Observable
-    - [x] RxJS streams
-    - [x] Most streams
-- [x] Stream processing
-  - [x] RxJS
-  - [x] Most  
+  - [x] epics via Redux-Observable
+- [x] RxJS Stream processing
 - [x] Utility libraries
   - [x] immer for immutability
-  - [x] rambdax for default values
   - [x] superagent for http
   - [x] rust-match for conditionals
 - [x] Styling
@@ -219,6 +224,8 @@ The `config` folder contains files specifying default configuration settings and
   - [x] postcss
 - [x] Development
   - [x] babel transpiler
+    - [x] plugin-proposal-nullish-coalescing-operator 
+    - [x] plugin-proposal-optional-chaining
   - [x] eslint style checker
   - [x] flow static type checker
   - [x] node Javascript runtime

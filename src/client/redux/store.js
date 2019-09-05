@@ -4,14 +4,14 @@ import { applyMiddleware, compose, createStore } from 'redux';
 import { epicMiddleware, rootEpic } from './epics';
 import { rootReducer } from './reducers';
 
+/* eslint-disable indent, no-undef */
 const composeEnhancers: any =
-	// eslint-disable-next-line no-undef
 	typeof window === 'object' && window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__
-		? // eslint-disable-next-line no-undef
-		  window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__({
-			// options here
+		? window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__({
+				// options here
 		  })
 		: compose;
+/* eslint-enable indent, no-undef */
 
 export function configureStore() {
 	const middleware = [];

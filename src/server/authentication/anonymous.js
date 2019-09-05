@@ -1,7 +1,7 @@
 const Strategy = require('passport-custom');
 
 module.exports = opts => {
-	return function() {
+	return function anonAuthenticationSetup() {
 		const verifier = async (req, done) => {
 			// create a new user in the user service
 			// mark this user with a specific anonymous=true attribute

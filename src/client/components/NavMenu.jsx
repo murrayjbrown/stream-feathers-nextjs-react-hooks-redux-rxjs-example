@@ -8,25 +8,31 @@ export default function NavMenu() {
 			<ul>
 				<li>
 					<Link prefetch href='/' passHref>
-						<a>Home</a>
+						<a href='/'>Home</a>
 					</Link>
 				</li>
 				<li> • </li>
 				<li>
 					<Link prefetch href='/simpleTicker' passHref>
-						<a>Simple Ticker</a>
+						<a href='/simpleTicker'>Simple Ticker</a>
 					</Link>
 				</li>
 				<li> • </li>
 				<li>
 					<Link prefetch href='/reduxTicker' passHref>
-						<a>Redux Ticker</a>
+						<a href='/reduxTicker'>Redux Ticker</a>
+					</Link>
+				</li>
+				<li> • </li>
+				<li>
+					<Link prefetch href='/reduxColorizer' passHref>
+						<a href='/reduxColorizer'>Redux Colorizer</a>
 					</Link>
 				</li>
 				<li> • </li>
 				<li>
 					<Link prefetch href='/about' passHref>
-						<a>About</a>
+						<a href='/about'>About</a>
 					</Link>
 				</li>
 			</ul>

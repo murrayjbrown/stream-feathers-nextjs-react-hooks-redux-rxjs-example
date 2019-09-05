@@ -23,6 +23,6 @@ module.exports = function gravatarHook() {
 		const avatar = `${gravatarUrl}/${hash}?${query}`;
 
 		// Best practise, hooks should always return the context
-		return { ...context, data: { ...context.data, avatar }};
+		return { ...context, data: { ...context.data, avatar } };
 	};
 };

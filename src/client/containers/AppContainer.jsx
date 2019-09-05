@@ -5,6 +5,7 @@ import match from 'rust-match';
 import produce from 'immer';
 import AppLogin from '@client/containers/AppLogin';
 
+/*
 const app = {
 	client: null,
 	socket: null,
@@ -18,6 +19,7 @@ const initClient = () => {
 	}
 	return app.client;
 };
+*/
 
 type Action = {
 	type: string,
@@ -75,7 +77,7 @@ export const reducer = (state: State, action: Action) =>
 				return { ...draft, ...action.payload };
 			},
 			_: () => {
-				throw new Error('Unexpected action: ' + action.type);
+				throw new Error(`Unexpected action: ${action.type}`);
 			},
 		}),
 	);
@@ -84,31 +86,26 @@ export const reducer = (state: State, action: Action) =>
  * Custom hook
  */
 
+export const AppContainerContext: any = React.createContext<State>(
+	initialState,
+);
+
 export function useAppContainer() {
 	const contextValue = useContext(AppContainerContext);
 
 	return useReducer(reducer, contextValue);
 }
 
-export const AppContainerContext: any = React.createContext<State>(
-	initialState,
-);
-
-type Props = {
-	authenticate?: string,
-	children?: any,
-	label?: string
-};
-
-export default function AppContainer({
-	authenticate = 'anonymous',
-	children,
-	label
-}: Props) {
+export default function AppContainer(props: Object) {
+	const {
+		authenticate,
+		children,
+		label
+	} = props;
 	const [state, dispatch] = useAppContainer();
 
 	useEffect(() => {
-		const client = initClient();
+		const { client } = feathers();
 		if (client && !state.isStarted) {
 			client.service('authenticated').removeListener('created');
 			client.on('authenticated', login => {
@@ -134,7 +131,7 @@ export default function AppContainer({
 	if (!authenticate.startsWith('anon') && !state.login) {
 		return (
 			<AppContainerContext.Provider value={state}>
-				<AppLogin data-testid={'AppLogin'} label={label}>
+				<AppLogin data-testid='AppLogin' label={label}>
 					{children}
 				</AppLogin>
 			</AppContainerContext.Provider>

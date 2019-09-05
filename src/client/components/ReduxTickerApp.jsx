@@ -1,45 +1,21 @@
 // @flow
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import actions from '@client/redux/actions';
+import timeTickAction from '@client/redux/actions/timeTick';
 import feathers from '@client/feathers';
-import clone from '@utils/clone';
 
 export default function ReduxTickerApp() {
 	const { client } = feathers();
 
 	const dispatch = useDispatch();
 
-	const color = useSelector(state => {
-		const result = !(
-			state.timeReducer &&
-			state.timeReducer.time &&
-			state.timeReducer.time.color
-		)
-			? '#000'
-			: clone(state).timeReducer.time.color;
-		return result;
-	});
-
-	const time = useSelector(state => {
-		const result = !(
-			state.timeReducer &&
-			state.timeReducer.time &&
-			state.timeReducer.time.time
-		)
-			? 'Now'
-			: clone(state).timeReducer.time.time;
-		return result;
-	});
-
 	function dispatchTick(message) {
-		dispatch(actions.tick({
+		dispatch(timeTickAction({
 			meta: {
 				timestamp: message.timestamp,
 			},
 			payload: {
 				id: message.id,
-				rgb: message.payload.rgb,
 				time: message.payload.time,
 			}
 		}));
@@ -64,12 +40,16 @@ export default function ReduxTickerApp() {
 		};
 	}, [client]);
 
+	const time = useSelector(state => state.timeReducer.time);
+
+	// const { color, time } = useSelector(state => state.timeReducer) ?? { color: '#ffffff', time: 'Now' };
+
 	return (
 		<main className='container text-center'>
-			<h1>
-				Time:&nbsp;
-				<span style={{ color }}>{time}</span>
-			</h1>
+			<h1>Redux Ticker</h1>
+			<h2>
+				{time}
+			</h2>
 		</main>
 	);
 }

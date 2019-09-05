@@ -7,4 +7,3 @@ require.extensions['.css'] = () => {};
 require.extensions['.jpg'] = () => {};
 require.extensions['.png'] = () => {};
 require.extensions['.scss'] = () => {};
-

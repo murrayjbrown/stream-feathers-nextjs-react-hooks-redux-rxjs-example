@@ -2,13 +2,11 @@
 import React, { useEffect, useState } from 'react';
 import feathers from '@client/feathers';
 import datetime from 'dayjs';
-import colorString from '@utils/colorString';
 
 export default function SimpleTickerApp() {
 	const { client } = feathers();
 
 	const [time, setTime] = useState('Now');
-	const [color, setColor] = useState('#000000');
 
 	useEffect(() => {
 		if (client) {
@@ -18,9 +16,6 @@ export default function SimpleTickerApp() {
 			if (client.service) {
 				// Subscribe to ticker stream
 				client.service('ticks').on('created', message => {
-					if (message.payload.rgb) {
-						setColor(colorString(message.payload.rgb));
-					}
 					setTime(datetime(message.payload.time).format('YYYY-MM-DD HH:mm:ss'));
 				});
 			}
@@ -40,10 +35,10 @@ export default function SimpleTickerApp() {
 
 	return (
 		<main className='container text-center'>
-			<h1>
-				Time:&nbsp;
-				<span style={{ color }}>{time}</span>
-			</h1>
+			<h1>Simple Ticker</h1>
+			<h2>
+				{time}
+			</h2>
 		</main>
 	);
 }

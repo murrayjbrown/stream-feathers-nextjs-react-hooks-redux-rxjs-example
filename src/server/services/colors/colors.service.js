@@ -4,7 +4,7 @@ const match = require('rust-match');
 const utc = require('dayjs/plugin/utc');
 const { interval } = require('rxjs');
 const { produce } = require('immer');
-const { randByte } = require('@utils/randByte');
+const { randModulo } = require('@utils/randModulo');
 const createService = require('./colors.class.js');
 const hooks = require('./colors.hooks');
 
@@ -20,35 +20,57 @@ module.exports = function bluesService(app: any) {
 	// Get our initialized service so that we can register hooks
 	const service = app.service('colors');
 
-	function *payload() {
+	const randByte = () => randModulo(256);
+
+	function* payloadGenerator() {
 		const initialState = {
-			color: {
+			rgb: {
 				r: randByte(),
 				g: randByte(),
 				b: randByte(),
 			},
-			vary: 'none'
+			vary: 'none',
 		};
 
-		yield produce(initialState, draft =>
-			match(String(Number(Math.floor(4 * Math.random()))), {
-				'0': () => ({ ...draft, vary: 'red', color: { ...draft.color, r: randByte() }}),
-				'1': () => ({ ...draft, vary: 'green', color: { ...draft.color, g: randByte() }}),
-				'2': () => ({ ...draft, vary: 'blue', color: { ...draft.color, b: randByte() }}),
-				_: () => ({ ...draft, vary: 'none'}),
-			}));
+		while (true) {
+			yield produce(initialState, draft =>
+				match(String(randModulo(4)), {
+					'0': () => ({
+						...draft,
+						vary: 'red',
+						rgb: { ...draft.rgb, r: randByte() },
+					}),
+					'1': () => ({
+						...draft,
+						vary: 'green',
+						rgb: { ...draft.rgb, g: randByte() },
+					}),
+					'2': () => ({
+						...draft,
+						vary: 'blue',
+						rgb: { ...draft.rgb, b: randByte() },
+					}),
+					_: () => ({ ...draft, vary: 'none' }),
+				}),
+			);
+		}
 	}
 
 	// Emit periodic color notifications
 	datetime.extend(utc);
+	const payload = payloadGenerator();
 	interval(1000).subscribe(id => {
-		service.create({
+		const timestamp = datetime(new Date())
+			.utc()
+			.toISOString();
+		const message = {
 			id,
-			payload: payload(),
-			time: datetime(new Date())
-				.utc()
-				.toISOString(),
-		});
+			timestamp,
+			payload: payload.next().value,
+		};
+		// eslint-disable-next-line
+		console.log('colors: ', message);
+		service.create(message);
 	});
 
 	// Invoke service hooks

@@ -23,7 +23,7 @@ test('App: Login needed', () => {
 test('App: Login fields empty', () => {
 	const { getByLabelText } = composite;
 	const email = getByLabelText('Email');
-	expect(email.value.length).to.equal(0);
+	expect(email.value.length).toBe(0);
 	const password = getByLabelText('Password');
-	expect(password.value.length).to.equal(0);
+	expect(password.value.length).toBe(0);
 });

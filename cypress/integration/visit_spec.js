@@ -7,8 +7,16 @@ describe('Visit localhost server', function() {
 		cy.visit('http://localhost:3030/about');
 	});
 
-	it('Visit Posts page', function() {
-		cy.visit('http://localhost:3030/chat');
+	it('Visit Simple Ticker page', function() {
+		cy.visit('http://localhost:3030/simpleTicker');
+	});
+
+	it('Visit Redux Ticker page', function() {
+		cy.visit('http://localhost:3030/reduxTicker');
+	});
+
+	it('Visit Redux Colorizer page', function() {
+		cy.visit('http://localhost:3030/reduxColorizer');
 	});
 
 });

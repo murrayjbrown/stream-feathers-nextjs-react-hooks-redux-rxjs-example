@@ -2,10 +2,7 @@
 
 module.exports = function babelConfig(api) {
 	const config = {
-		babelrcRoots: [
-			'.',
-			'src/*',
-		],
+		babelrcRoots: ['.', 'src/*'],
 		presets: [
 			'@babel/preset-env',
 			'@babel/preset-flow',
@@ -13,6 +10,8 @@ module.exports = function babelConfig(api) {
 			'next/babel',
 		],
 		plugins: [
+			'@babel/plugin-proposal-nullish-coalescing-operator',
+			'@babel/plugin-proposal-optional-chaining',
 			[
 				'module-resolver',
 				{
@@ -27,10 +26,14 @@ module.exports = function babelConfig(api) {
 						'@utils': './src/utils',
 					},
 				},
-				(!api.env('production') ? undefined : 'transform-remove-console')
 			],
 		],
 	};
+
+	if (api.env('production')) {
+		// eslint-disable-next-line fp/no-mutating-methods
+		config.plugins.push('transform-remove-console');
+	}
 
 	if (api.env('testing')) {
 		// eslint-disable-next-line global-require

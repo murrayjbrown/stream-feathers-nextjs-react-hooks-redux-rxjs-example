@@ -8,8 +8,8 @@ type ClientApp = {
 };
 
 const app: ClientApp = {
-	client: null,	// eslint-disable-line fp/no-nil
-	socket: null,// eslint-disable-line fp/no-nil
+	client: null, // eslint-disable-line fp/no-nil
+	socket: null, // eslint-disable-line fp/no-nil
 };
 
 export default function feathersClient() {

@@ -21,5 +21,6 @@ module.exports = {
 		'^.*\\.scss$': '<rootDir>/test/stubs/stub.scss',
 	},
 	setupFilesAfterEnv: ['<rootDir>/test/jest/setup.js'],
-	testMatch: ['**/?(*.)+' + testSpec + '.jsx'],
+	testMatch: [`**/?(*.)+${testSpec}.jsx`],
+	testURL: 'http://localhost/',
 };

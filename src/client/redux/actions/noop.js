@@ -4,6 +4,6 @@ import { NOOP } from '@client/redux/constants/ActionTypes';
 
 // No (nil) operation action
 export type NoopPayload = any;
-export default function noop(payload: NoopPayload) {
+export default function noopAction(payload: NoopPayload) {
 	return createAction(NOOP, payload);
 }

@@ -1,11 +1,10 @@
 const config = require('config');
 const winston = require('winston');
-const { defaultTo } = require('rambdax');
 
 const logger = winston.createLogger({
 	transports: [
 		new winston.transports.File({
-			level: defaultTo('info', config.get('logLevel.file')),
+			level: config.get('logLevel.file') ?? 'info',
 			filename: './logs/all.log',
 			format: winston.format.combine(
 				winston.format.splat(),
@@ -18,7 +17,7 @@ const logger = winston.createLogger({
 			colorize: false,
 		}),
 		new winston.transports.Console({
-			level: defaultTo('info', config.get('logLevel.console')),
+			level: config.get('logLevel.console') ?? 'info',
 			format: winston.format.combine(
 				winston.format.splat(),
 				winston.format.simple(),

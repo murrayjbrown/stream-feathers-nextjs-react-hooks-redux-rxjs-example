@@ -7,7 +7,11 @@ export default class extends Document {
 		return (
 			<html lang='en' style={{ margin: 0, padding: 0 }}>
 				<Head>
-					<link href='/public/styles/base.css' rel="stylesheet" type="text/css" />
+					<link
+						href='/public/styles/base.css'
+						rel='stylesheet'
+						type='text/css'
+					/>
 				</Head>
 				<body style={{ margin: 0, padding: 0 }}>
 					<Main />

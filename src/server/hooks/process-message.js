@@ -24,12 +24,12 @@ module.exports = function processMessageHook(options: any = {}) {
 		const overrideData = {
 			text,
 			// Set the user id
-			userId: user._id,	// eslint-disable-line no-underscore-dangle
+			userId: user._id, // eslint-disable-line no-underscore-dangle
 			// Add the current date
 			createdAt: new Date().getTime(),
 		};
 
 		// Best practise, hooks should always return the context
-		return { ...context, data: { ...context.data, ...overrideData }};
+		return { ...context, data: { ...context.data, ...overrideData } };
 	};
 };

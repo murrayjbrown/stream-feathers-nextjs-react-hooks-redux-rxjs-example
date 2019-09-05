@@ -1,6 +1,6 @@
 const logger = require('./logger');
 
-module.exports = function(app) {
+module.exports = function channels(app) {
 	if (typeof app.channel !== 'function') {
 		// If no real-time functionality has been configured just return
 		return;

@@ -4,12 +4,12 @@ module.exports = {
 		node: true,
 	},
 	extends: [
-		'airbnb',
 		'plugin:fp/recommended',
 		"plugin:jsx-a11y/recommended",
 		'plugin:react/recommended',
 		'eslint:recommended',
-		'prettier',
+		'airbnb',
+		'plugin:prettier/recommended',
 	],
 	parser: 'babel-eslint',
 	parserOptions: {
@@ -28,6 +28,7 @@ module.exports = {
 		'chai-friendly',
 		'cypress',
 		'jest',
+		'prettier',
 	],
 	rules: {
 		indent: [
@@ -42,19 +43,31 @@ module.exports = {
 		'no-unused-vars': 'warn',
 		quotes: ['error', 'single'],
 		semi: ['warn', 'always'],
-		'import/no-unresolved': 'off',
+		'fp/no-class': 'off',
+		'fp/no-loops': 'off',
 		'fp/no-mutation': [
 			'error',
 			{
 				commonjs: true,
 			},
 		],
+		'fp/no-nil': 'off',
+		'fp/no-this': 'off',
+		'fp/no-throw': 'off',
 		'fp/no-unused-expression': [
 			'off',
 			{
 				allowUseStrict: true,
 			},
 		],
+		'import/no-unresolved': 'off',
+		'jsx-a11y/label-has-associated-control': [
+			"error",
+			{
+				assert: "either"
+			},
+		],
+		"prettier/prettier": "error",
 		'react/jsx-indent': [
 			'warn',
 			'tab',
@@ -62,6 +75,7 @@ module.exports = {
 				checkAttributes: true,
 			},
 		],
+		'react/jsx-indent-props': 'off',
 		'react/prop-types': 'off',
 		'react-hooks/rules-of-hooks': 'error',
 	},

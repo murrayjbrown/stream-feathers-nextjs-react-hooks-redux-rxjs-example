@@ -2,7 +2,6 @@
 import React, { useEffect, useState } from 'react';
 import superagent from 'superagent';
 import Markdown from 'react-markdown';
-import { defaultToStrict } from 'rambdax';
 
 type Props = {
 	src: string
@@ -18,7 +17,7 @@ export default function IncludeMarkdown({ src }: Props) {
 				// eslint-disable-next-line no-console
 				console.log('IncludeMarkdown superagent: ', err);
 			});
-			setState(defaultToStrict('')(res.text));
+			setState(res.text ?? '');
 		}
 
 		getText();

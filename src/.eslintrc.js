@@ -1,6 +1,16 @@
 module.exports = {
 	overrides: [
 		{
+			files: ['*.js'],
+			rules: {
+				'fp/no-class': 'warn',
+				'fp/no-mutation': 'warn',
+				'fp/no-nil': 'off',
+				'fp/no-this': 'warn',
+				'fp/no-throw': 'off'
+			}
+		},
+		{
 			files: ['*.jsx'],
 			rules: {
 				'fp/no-class': 'warn',

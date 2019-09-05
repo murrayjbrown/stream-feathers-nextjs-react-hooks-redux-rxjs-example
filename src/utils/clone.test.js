@@ -3,7 +3,7 @@ import test from 'ava';
 import { clone } from './index';
 
 test('clone(object)', t => {
-	const obj = {a: 1};
+	const obj = { a: 1 };
 	const result = clone(obj);
 	t.deepEqual(result, obj);
 	t.not(result, obj);

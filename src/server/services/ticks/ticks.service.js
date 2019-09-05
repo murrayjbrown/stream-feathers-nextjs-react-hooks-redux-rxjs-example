@@ -3,7 +3,7 @@
 const datetime = require('dayjs');
 const utc = require('dayjs/plugin/utc');
 const { interval } = require('rxjs');
-const { randByte } = require('@utils/randByte');
+const { randModulo } = require('@utils/randModulo');
 const createService = require('./ticks.class.js');
 const hooks = require('./ticks.hooks');
 
@@ -18,6 +18,8 @@ module.exports = function ticksService(app: any) {
 
 	// Get our initialized service so that we can register hooks
 	const service = app.service('ticks');
+
+	const randByte = () => randModulo(256);
 
 	function rgb() {
 		return {
@@ -39,7 +41,7 @@ module.exports = function ticksService(app: any) {
 			payload: {
 				time: timestamp,
 				rgb: rgb(),
-			}
+			},
 		};
 		service.create(message);
 	});

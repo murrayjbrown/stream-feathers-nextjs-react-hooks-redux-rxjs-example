@@ -1,19 +1,18 @@
 // @flow
 import React, { /* useEffect, */ useState } from 'react';
-import { dashJoin } from '@utils';
-import { defaultToStrict } from 'rambdax';
+import feathers from '@client/feathers';
 import {
 	actions,
-	appClient,
 	useAppContainer,
 } from '@client/containers/AppContainer';
+import { dashJoin } from '@utils';
 
 type Props = {
-	children?: Array<Object>,
-	label?: string,
+	children: Array<Object>,
+	label: string,
 };
 
-export default function AppLogin({ children, label }: Props) {
+export default function AppLogin({ children, label = '' }: Props) {
 	// eslint-disable-next-line no-unused-vars
 	const [state, dispatch] = useAppContainer();
 
@@ -21,7 +20,7 @@ export default function AppLogin({ children, label }: Props) {
 	const [passcode, setPasscode] = useState('');
 
 	const login = () => {
-		const client = appClient();
+		const { client } = feathers();
 		if (client && !state.login) {
 			const password = passcode;
 			setPasscode(''); // clear password field ASAP
@@ -44,7 +43,7 @@ export default function AppLogin({ children, label }: Props) {
 	};
 
 	const signup = async () => {
-		const client = appClient();
+		const { client } = feathers();
 		if (client) {
 			// register new user with server
 			await client
@@ -61,8 +60,8 @@ export default function AppLogin({ children, label }: Props) {
 		return <div>{children}</div>;
 	}
 
-	const id = (...ids: Array<string>) =>
-		dashJoin(defaultToStrict('', label), ...ids);
+	const id = (ids: Array<string>) =>
+		!label ? dashJoin(ids) : dashJoin([label, ...ids]);
 
 	return (
 		<main className='login container'>
@@ -71,7 +70,7 @@ export default function AppLogin({ children, label }: Props) {
 					<h1 className='font-100'>Login or signup</h1>
 					<p
 						className='errorMessage'
-						data-testid={id('errorMessage')}
+						data-testid={id(['errorMessage'])}
 					>
 						{state.error && state.error.message}
 					</p>
@@ -81,58 +80,53 @@ export default function AppLogin({ children, label }: Props) {
 				<div className='col-12 col-6-tablet push-3-tablet col-4-desktop push-4-desktop'>
 					<form className='form'>
 						<fieldset>
-							<label className='email' id={id('email')}>
+							<label className='email' id={id(['email'])}>
 								Email
-							</label>
-							<input
-								required
-								className='email'
-								type='email'
-								name='email'
-								placeholder='email'
-								aria-labelledby={id('email')}
-								data-testid={id('email')}
-								onChange={ev => setEmail(ev.target.value)}
-							/>
-						</fieldset>
+								<input
+									required
+									className='email'
+									type='email'
+									name='email'
+									placeholder='email'
+									aria-labelledby={id(['email'])}
+									data-testid={id(['email'])}
+									onChange={ev => setEmail(ev.target.value)}
+								/>
 
-						<fieldset>
-							<label className='password' id={id('password')}>
-								Password
 							</label>
-							<input
-								required
-								className='password'
-								type='password'
-								name='password'
-								placeholder='password'
-								aria-labelledby={id('password')}
-								data-testid={id('password')}
-								onChange={ev => setPasscode(ev.target.value)}
-							/>
+						</fieldset>
+						<fieldset>
+							<label className='password' id={id(['password'])}>
+								Password
+								<input
+									required
+									className='password'
+									type='password'
+									name='password'
+									placeholder='password'
+									aria-labelledby={id(['password'])}
+									data-testid={id(['password'])}
+									onChange={ev => setPasscode(ev.target.value)}
+								/>
+							</label>
 						</fieldset>
 						<button
 							type='button'
 							className='button button-primary block signup'
-							aria-labelledby={id('login')}
-							data-testid={id('login')}
+							aria-labelledby={id(['login'])}
+							data-testid={id(['login'])}
 							onClick={() => login()}
 						>
-							<label className='login' id={id('login')}>
-								Login
-							</label>
+							Login
 						</button>
-
 						<button
 							type='button'
 							className='button button-primary block signup'
-							aria-labelledby={id('signup')}
-							data-testid={id('signup')}
+							aria-labelledby={id(['signup'])}
+							data-testid={id(['signup'])}
 							onClick={() => signup()}
 						>
-							<label className='signup' id={id('signup')}>
-								Signup
-							</label>
+							Signup
 						</button>
 					</form>
 				</div>

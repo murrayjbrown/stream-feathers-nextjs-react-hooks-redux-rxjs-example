@@ -35,7 +35,7 @@ untyped-import=warn
 untyped-type-import=warn
 
 [options]
-#esproposal.optional_chaining=enable
+esproposal.optional_chaining=enable
 include_warnings=false
 module.file_ext=.js
 module.file_ext=.json

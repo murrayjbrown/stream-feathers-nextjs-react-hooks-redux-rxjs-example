@@ -10,10 +10,9 @@ export type TimeProps = {
 	},
 	payload: {
 		time: string,
-		color: string
-	}
+	},
 };
 
-export default function timeAction({payload, meta}: TimeProps) {
+export default function timeAction({ payload, meta }: TimeProps) {
 	return createAction(TIME, payload, meta);
 }
