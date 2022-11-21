@@ -71,7 +71,7 @@
 		"trace": "NODE_ENV='development' node --trace-warnings dist/server/"
 	},
 	"dependencies": {
-		"@feathersjs/authentication": "^2.1.16",
+		"@feathersjs/authentication": "^4.5.15",
 		"@feathersjs/authentication-jwt": "^2.0.10",
 		"@feathersjs/authentication-local": "^1.2.9",
 		"@feathersjs/client": "^3.7.8",
